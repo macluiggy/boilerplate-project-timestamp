@@ -25,7 +25,7 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-//LA PARTE DE LOS PROJECTOS......
+//LA PARTE DE LOS PROJECTOS...... hola
 /*A request to /api/:date? with a valid date should return a JSON object with a unix key that is a Unix timestamp of the input date in milliseconds*/
 
 app.get("/api/:date", (req, res) => {
