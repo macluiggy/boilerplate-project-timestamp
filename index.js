@@ -72,8 +72,8 @@ app.get('/api', (req, res) => {
   res.json(responseObject);
 })
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
+var listener = app.listen(function () {
+  console.log('Your app is listening on port ' + process.env.PORT);
 });
 
 //module.exports.handler = serverless(app)
