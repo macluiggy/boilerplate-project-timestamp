@@ -27,16 +27,34 @@ app.get("/api/hello", function (req, res) {
 
 //LA PARTE DE LOS PROJECTOS...... 
 /*A request to /api/:date? with a valid date should return a JSON object with a unix key that is a Unix timestamp of the input date in milliseconds*/
-
-app.get("/api/:string_date", (req, res) => {
-  let { string_date } = req.params;
-  let date = new Date(string_date)
-  res.json({
-    unix: date.getTime(),
-    utc: date.toUTCString(),
-  })
+let responseObject = {}
+app.get("/api/:input", (req, res) => {
+  let { input } = req.params;
+  let date
+  if (input.includes('-')) {
+    date = new Date(input)
+    responseObject['unix'] = date.getTime();
+    responseObject['utc'] = date.toUTCString();
+  } else {
+    input = parseInt(input);
+    date = new Date(input)
+    responseObject['unix'] = date.getTime();
+    responseObject['utc'] = date.toUTCString();
+  }
+  if (!responseObject['unix'] || !responseObject['utc']) {
+    res.json({
+      error: 'Invalid Date'
+    })
+  }
+  res.json(responseObject)
 })
 
+app.get('/api', (req, res) => {
+  let date = new Date()
+  responseObject['unix'] = date.getTime();
+  responseObject['utc'] = date.toUTCString();
+  res.json(responseObject);
+})
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
