@@ -26,24 +26,27 @@ app.get("/api/hello", function (req, res) {
 });
 
 //LA PARTE DE LOS PROJECTOS...... 
-/*A request to /api/:date? with a valid date should return a JSON object with a unix key that is a Unix timestamp of the input date in milliseconds*/
+/*A request to /api/:date? with a valid date should return a JSON object with a unix key that is a Unix timestamp of the date_string date in milliseconds*/
 let responseObject = {}
-app.get("/api/:input", (req, res) => {
-  let { input } = req.params;
-  let input2 = +input || input;
-  console.log(input2)
-  let date = new Date(input2)
+app.get("/api/:date_string", (req, res) => {
+  let { date_string } = req.params;
+  /*if (date_string.match(/\d{5,}/)) {
+    date_string = +date_string
+  }*/
+  date_string = +date_string || date_string
+  console.log(date_string)
+  let date = new Date(date_string)
   console.log(date)
   responseObject['unix'] = date.getTime();
   responseObject['utc'] = date.toUTCString();
   /*
-  if (input.includes('-')) {
-    date = new Date(input)
+  if (date_string.includes('-')) {
+    date = new Date(date_string)
     responseObject['unix'] = date.getTime();
     responseObject['utc'] = date.toUTCString();
   } else {
-    input = parseInt(input);
-    date = new Date(input)
+    date_string = parseInt(date_string);
+    date = new Date(date_string)
     responseObject['unix'] = date.getTime();
     responseObject['utc'] = date.toUTCString();
   }
@@ -54,7 +57,7 @@ app.get("/api/:input", (req, res) => {
   }*/
   if (date == 'Invalid Date') {
     res.json({
-      error: 'Invalid Date'
+      error: `${date}`
     })
   } else {
     res.json(responseObject)
