@@ -1,10 +1,23 @@
+//const express = require('express');
 // server.js
 // where your node app starts
 
 // init project
 var express = require('express');
 var app = express();
-require('dotenv').config({ path: './.env'})
+require('dotenv').config()
+var path = require('path')
+
+const serverless = require('serverless-http');
+
+//const app = express();
+const router = express.Router();
+
+router.get("/", (req, res) => {
+	res.sendfile(path.resolve('./index.html'));
+})
+console.log(__dirname)
+
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC 
@@ -15,10 +28,9 @@ app.use(cors({optionsSuccessStatus: 200}));  // some legacy browsers choke on 20
 app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (req, res) {
+app.get("/hola", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
-});
-
+}) ;
 
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
@@ -38,8 +50,10 @@ app.get("/api/:string_date", (req, res) => {
 })
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+/*var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
-});
+});*/
 
-//module.exports.handler = serverless(app)
+app.use('/.netlify/functions/api', router)
+module.exports = app;
+module.exports.handler = serverless(app)

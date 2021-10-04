@@ -2,14 +2,16 @@
   "name": "fcc-api-projects-boilerplate",
   "version": "0.0.1",
   "description": "An FCC Backend Challenge",
-  "main": "server.js",
+  "main": "./src/api.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "cors": "^2.8.0",
     "dotenv": "^10.0.0",
-    "express": "^4.12.4"
+    "express": "^4.12.4",
+    "netlify-lambda": "^2.0.14",
+    "serverless-http": "^2.7.0"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,5 @@
     "freecodecamp"
   ],
   "license": "MIT",
-  "devDependencies": {},
   "author": ""
 }
