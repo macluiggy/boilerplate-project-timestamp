@@ -30,7 +30,13 @@ app.get("/api/hello", function (req, res) {
 let responseObject = {}
 app.get("/api/:input", (req, res) => {
   let { input } = req.params;
-  let date
+  let input2 = +input || input;
+  console.log(input2)
+  let date = new Date(input2)
+  console.log(date)
+  responseObject['unix'] = date.getTime();
+  responseObject['utc'] = date.toUTCString();
+  /*
   if (input.includes('-')) {
     date = new Date(input)
     responseObject['unix'] = date.getTime();
@@ -45,8 +51,15 @@ app.get("/api/:input", (req, res) => {
     res.json({
       error: 'Invalid Date'
     })
+  }*/
+  if (date == 'Invalid Date') {
+    res.json({
+      error: 'Invalid Date'
+    })
+  } else {
+    res.json(responseObject)
   }
-  res.json(responseObject)
+  
 })
 
 app.get('/api', (req, res) => {
