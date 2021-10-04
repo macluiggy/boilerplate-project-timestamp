@@ -1,6 +1,5 @@
 // server.js
 // where your node app starts
-
 // init project
 var express = require('express');
 var app = express();
@@ -30,31 +29,14 @@ app.get("/api/hello", function (req, res) {
 let responseObject = {}
 app.get("/api/:date_string", (req, res) => {
   let { date_string } = req.params;
-  /*if (date_string.match(/\d{5,}/)) {
-    date_string = +date_string
-  }*/
+  
   date_string = +date_string || date_string
-  console.log(date_string)
+  //console.log(date_string)
   let date = new Date(date_string)
-  console.log(date)
+  //console.log(date)
   responseObject['unix'] = date.getTime();
   responseObject['utc'] = date.toUTCString();
-  /*
-  if (date_string.includes('-')) {
-    date = new Date(date_string)
-    responseObject['unix'] = date.getTime();
-    responseObject['utc'] = date.toUTCString();
-  } else {
-    date_string = parseInt(date_string);
-    date = new Date(date_string)
-    responseObject['unix'] = date.getTime();
-    responseObject['utc'] = date.toUTCString();
-  }
-  if (!responseObject['unix'] || !responseObject['utc']) {
-    res.json({
-      error: 'Invalid Date'
-    })
-  }*/
+
   if (date == 'Invalid Date') {
     res.json({
       error: `${date}`
