@@ -54,6 +54,7 @@ app.get('/api', (req, res) => {
   res.json(responseObject);
 })
 // listen for requests :)
-var listener = app.listen(function () {
-  console.log('Your app is listening on port ' + process.env.PORT);
+let port = process.env.PORT
+var listener = app.listen(port, function () {
+  console.log('Your app is listening on port ' + 3000);
 });
