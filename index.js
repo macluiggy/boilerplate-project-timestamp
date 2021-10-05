@@ -3,7 +3,7 @@
 // init project
 var express = require('express');
 var app = express();
-require('dotenv').config({ path: './.env'})
+require('dotenv').config()
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC 
@@ -53,7 +53,14 @@ app.get('/api', (req, res) => {
   responseObject['utc'] = date.toUTCString();
   res.json(responseObject);
 })
+
+app.get('/api/compa', (req, res) => {
+  res.json({
+    hola: 'como esta mi compa'
+  })
+})
 // listen for requests :)
-var listener = app.listen(function () {
-  console.log('Your app is listening on port ' + process.env.PORT);
+
+var listener = app.listen(3000, function () {
+  console.log('Your app is listening on port 3000');
 });
