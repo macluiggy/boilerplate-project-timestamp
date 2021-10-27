@@ -22,7 +22,7 @@ app.get("/", function (req: any, res: SendFileResponse) {
 });
 
 interface ApiHelloResponse {
-    json: ({greeting: string}) => void;
+    json: ({greeting}: {greeting: string}) => void;
 }
 // your first API endpoint... 
 app.get("/api/hello", function (req: any, res: ApiHelloResponse) {
@@ -31,15 +31,21 @@ app.get("/api/hello", function (req: any, res: ApiHelloResponse) {
 
 //LA PARTE DE LOS PROJECTOS...... 
 /*A request to /api/:date? with a valid date should return a JSON object with a unix key that is a Unix timestamp of the date_string date in milliseconds*/
-
-type ApiDateStringResponseJsonArg = {} | {};
+interface ErrorResponse {
+    error: string
+}
+interface ResponseObject {
+    unix: number,
+    utc: string
+}
+type ApiDateStringResponseJsonArg = ResponseObject | ErrorResponse;
 interface ApiDateStringResponse {
     json: (jsonObject: ApiDateStringResponseJsonArg) => void;
 }
 interface ApiDateStringRequest {
     params: {date_string: number};
 }
-let responseObject = {}
+let responseObject = {unix: 0, utc: ''}
 app.get("/api/:date_string", (req: ApiDateStringRequest, res: ApiDateStringResponse) => {
     let {date_string} = req.params;
 
@@ -50,11 +56,13 @@ app.get("/api/:date_string", (req: ApiDateStringRequest, res: ApiDateStringRespo
     responseObject['unix'] = date.getTime();
     responseObject['utc'] = date.toUTCString();
 
-    if (date == 'Invalid Date') {
+    /*
+if (date == 'Invalid Date') {
         return res.json({
             error: `${date}`
         })
     }
+     */
 
     return res.json(responseObject)
 })
@@ -63,7 +71,7 @@ type ApiRequest = {
 
 }
 interface ApiResponse {
-    json: ({}) => void
+    json: (val: any) => void
 }
 app.get('/api', (req: ApiRequest, res: ApiResponse) => {
     let date = new Date()
@@ -72,6 +80,7 @@ app.get('/api', (req: ApiRequest, res: ApiResponse) => {
     res.json(responseObject);
 })
 // listen for requests :)
-let port = process.env.PORT || 3000 var listener = app.listen(port, function () {
+let port = process.env.PORT || 3000
+var listener = app.listen(port, function () {
     console.log('Your app is listening on port ' + process.env.PORT);
 });
