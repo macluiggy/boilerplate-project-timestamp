@@ -15,52 +15,52 @@ app.use(express.static(__dirname + '/public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+    res.sendFile(__dirname + '/views/index.html');
 });
 
 
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
+    res.json({greeting: 'hello API'});
 });
 
 //LA PARTE DE LOS PROJECTOS...... 
 /*A request to /api/:date? with a valid date should return a JSON object with a unix key that is a Unix timestamp of the date_string date in milliseconds*/
 let responseObject = {}
 app.get("/api/:date_string", (req, res) => {
-  let { date_string } = req.params;
-  
-  date_string = +date_string || date_string
-  //console.log(date_string)
-  let date = new Date(date_string)
-  //console.log(date)
-  responseObject['unix'] = date.getTime();
-  responseObject['utc'] = date.toUTCString();
+    let {date_string} = req.params;
 
-  if (date == 'Invalid Date') {
-    res.json({
-      error: `${date}`
-    })
-  } else {
-    res.json(responseObject)
-  }
-  
+    date_string = +date_string || date_string
+    //console.log(date_string)
+    let date = new Date(date_string)
+    //console.log(date)
+    responseObject['unix'] = date.getTime();
+    responseObject['utc'] = date.toUTCString();
+
+    if (date == 'Invalid Date') {
+        res.json({
+            error: `${date}`
+        })
+    } else {
+        res.json(responseObject)
+    }
+
 })
 
 app.get('/api', (req, res) => {
-  let date = new Date()
-  responseObject['unix'] = date.getTime();
-  responseObject['utc'] = date.toUTCString();
-  res.json(responseObject);
+    let date = new Date()
+    responseObject['unix'] = date.getTime();
+    responseObject['utc'] = date.toUTCString();
+    res.json(responseObject);
 })
 
 app.get('/api/compa', (req, res) => {
-  res.json({
-    hola: 'como esta mi compa'
-  })
+    res.json({
+        hola: 'como esta mi compa'
+    })
 })
 // listen for requests :)
 
 var listener = app.listen(3000, function () {
-  console.log('Your app is listening on port 3000');
+    console.log('Your app is listening on port 3000');
 });
