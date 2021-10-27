@@ -10,7 +10,8 @@
   "dependencies": {
     "cors": "^2.8.0",
     "dotenv": "^10.0.0",
-    "express": "^4.12.4"
+    "express": "^4.12.4",
+    "pnpm": "^6.19.1"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
     "freecodecamp"
   ],
   "license": "MIT",
-  "devDependencies": {},
-  "author": ""
+  "author": "",
+  "devDependencies": {
+    "@types/node": "^16.11.6"
+  }
 }
