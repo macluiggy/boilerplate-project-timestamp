@@ -17,7 +17,7 @@ app.use(express.static(__dirname + '/assets'));
 interface SendFileResponse {
     sendFile: (value: string) => void;
 }
-app.get("/", function (req: any, res: SendFileResponse) {
+app.get("/", function (_: any, res: SendFileResponse) {
     res.sendFile(__dirname + '/views/index.html');
 });
 
