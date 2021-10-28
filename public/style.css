@@ -9,7 +9,7 @@ body {
 	line-height: 1.4em;
 	width: 100%;
 	background-color: black;
-	color: white;
+	color: #ffffff;
 }
 
 #timestamp {
@@ -27,8 +27,14 @@ body {
 	text-align: left;
 }
 .container .item {
-	border: solid;
+	border: solid green;
 	padding:1.5em;
+	display: flex;
+	flex-direction: column;
+}
+code {
+	background-color: white;
+	color: red;
 }
 h3 {
   margin-top: 30px;
