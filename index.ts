@@ -24,7 +24,7 @@ app.get("/", function (req: any, res: SendFileResponse) {
 interface ApiHelloResponse {
     json: ({greeting}: {greeting: string}) => void;
 }
-// your first API endpoint...
+// your first API endpoint
 app.get("/api/hello", function (req: any, res: ApiHelloResponse) {
     res.json({greeting: 'hello API'});
 });
