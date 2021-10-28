@@ -15,34 +15,34 @@
         <div class='item'>
           <h3>Valid date</h3>
           <h4>Request</h4>
-          <code style='background-color: #545350; color: white'>GET /api/2021-10-28</code>
+          <code style='background-color: #545350; color: white'>GET /api/3021-10-28</code>
           <h4>Response</h4>
-          <code style="background-color: #545350; color: white">{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}</code>
-          <button type="button" class="button">Try it</button>
+          <code style="background-color: #545350; color: white">{"unix":33192288000000, "utc":"Sun, 28 Oct 3021 00:00:00 GMT"}</code>
+          <a href="api/3021-10-28/">Try it</a>
         </div>
         <div class='item'>
-          <h3>Valid date</h3>
+          <h3>Unix timestamp</h3>
           <h4>Request</h4>
-          <code style='background-color: #545350; color: white'>GET /api/2021-10-28</code>
+          <code style='background-color: #545350; color: white'>GET /api/1640908800000</code>
           <h4>Response</h4>
-          <code style='background-color: #545350; color: white'>{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}</code>
-          <button type="button" class="button">Try it</button>
+          <code style='background-color: #545350; color: white'>{"unix":1640908800000, "utc":"Fri, 31 Dec 2021 00:00:00 GMT"}</code>
+          <a href="/api/1640908800000">Try it</a>
         </div>
         <div class='item'>
-          <h3>Valid date</h3>
+          <h3>Current date (empty param)</h3>
           <h4>Request</h4>
-          <code style='background-color: #545350; color: white'>GET /api/2021-10-28</code>
+          <code style='background-color: #545350; color: white'>GET /api/</code>
           <h4>Response</h4>
-          <code style='background-color: #545350; color: white'>{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}</code>
-          <button type="button" class="button">Try it</button>
+          <code style='background-color: #545350; color: white'>{"unix": 1635439481334, "utc":"Thu, 28 Oct 2021 16:44:41 GMT"}</code>
+          <a href="api/">Try it</a>
         </div>
         <div class='item'>
-          <h3>Valid date</h3>
+          <h3>Invalid date</h3>
           <h4>Request</h4>
-          <code style='background-color: #545350; color: white'>GET /api/2021-10-28</code>
+          <code style='background-color: #545350; color: white'>GET /api/2021-13-28</code>
           <h4>Response</h4>
-          <code style='background-color: #545350; color: white'>{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}</code>
-          <button type="button" class="button">Try it</button>
+          <code style='background-color: #545350; color: white'>{"unix":null, "utc":"Invalid Date"}</code>
+          <a href="/api/2021-13-28">Try it</a>
         </div>
 
     </div>
