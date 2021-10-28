@@ -84,11 +84,3 @@ let port = process.env.PORT || 3000
 var listener = app.listen(port, function () {
     console.log('Your app is listening on port ' + process.env.PORT);
 });
-
-interface User {
-  name: string
-}
-
-let greetUser = (user: User) => {
-  return `Hello ${user.name}`
-}
