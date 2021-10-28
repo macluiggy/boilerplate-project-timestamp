@@ -6,7 +6,7 @@ var app = express();
 require('dotenv').config({path: './.env'})
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
-// so that your API is remotely testable by FCC 
+// so that your API is remotely testable by FCC
 var cors = require('cors');
 app.use(cors({optionsSuccessStatus: 200}));  // some legacy browsers choke on 204
 
@@ -24,12 +24,12 @@ app.get("/", function (req: any, res: SendFileResponse) {
 interface ApiHelloResponse {
     json: ({greeting}: {greeting: string}) => void;
 }
-// your first API endpoint... 
+// your first API endpoint...
 app.get("/api/hello", function (req: any, res: ApiHelloResponse) {
     res.json({greeting: 'hello API'});
 });
 
-//LA PARTE DE LOS PROJECTOS...... 
+//LA PARTE DE LOS PROJECTOS......
 /*A request to /api/:date? with a valid date should return a JSON object with a unix key that is a Unix timestamp of the date_string date in milliseconds*/
 interface ErrorResponse {
     error: string
@@ -84,3 +84,11 @@ let port = process.env.PORT || 3000
 var listener = app.listen(port, function () {
     console.log('Your app is listening on port ' + process.env.PORT);
 });
+
+interface User {
+  name: string
+}
+
+let greetUser = (user: User) => {
+  return `Hello ${user.name}`
+}

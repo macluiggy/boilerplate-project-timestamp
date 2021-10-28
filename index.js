@@ -47,3 +47,7 @@ var port = process.env.PORT || 3000;
 var listener = app.listen(port, function () {
     console.log('Your app is listening on port ' + process.env.PORT);
 });
+var greetUser = function (user) {
+    return "Hello " + user.name;
+};
+console.log(greetUser({ user: 123 }));
