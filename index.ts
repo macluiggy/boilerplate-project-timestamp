@@ -12,14 +12,14 @@ var cors = require('cors');
 app.use(cors({optionsSuccessStatus: 200}));  // some legacy browsers choke on 204
 
 // http://expressjs.com/en/starter/static-files.html
-app.use(express.static(path.join(__dirname, '../assets')));
+app.use(express.static(path.join(__dirname, './assets')));
 
 // http://expressjs.com/en/starter/basic-routing.html...
 interface SendFileResponse {
     sendFile: (value: string) => void;
 }
 app.get("/", function (_: any, res: SendFileResponse) {
-    res.sendFile(path.join(__dirname, '../views', 'index.html'));
+    res.sendFile(path.join(__dirname, './views', 'index.html'));
 });
 
 interface ApiHelloResponse {
